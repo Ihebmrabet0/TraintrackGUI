@@ -1,54 +1,69 @@
 #include <QApplication>
-#include <QWidget>
-#include <QSlider>
+#include <QMainWindow>
 #include <QPushButton>
+#include <QSlider>
 #include <QLabel>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QGridLayout>
-
-class CoolTrainUI : public QWidget {
-public:
-    CoolTrainUI(QWidget *parent = nullptr) : QWidget(parent) {
-        // Initialize UI components
-        QSlider *speedSlider = new QSlider(Qt::Horizontal, this);
-        speedSlider->setRange(0, 100); // Assuming 0 to 100 is the speed range
-
-        QPushButton *startButton = new QPushButton("START", this);
-        
-        QPushButton *trackButton1 = new QPushButton("1.Track", this);
-        QPushButton *trackButton2 = new QPushButton("2.Track", this);
-        
-        QLabel *workingTimeLabel = new QLabel("12:30\nWorking Time", this);
-        QLabel *lapsLabel = new QLabel("003\nLaps", this);
-        
-        QPushButton *lightButton = new QPushButton("Light", this);
-        QPushButton *moreSettingsButton = new QPushButton("More Settings", this);
-        
-        // Layout the UI components
-        QVBoxLayout *mainLayout = new QVBoxLayout(this);
-        
-        // Add components to the layout...
-        // You'll need to use QHBoxLayout, QVBoxLayout, and maybe QGridLayout
-        // for proper arrangement.
-
-        // For example, to layout the speed slider and the start button horizontally:
-        QHBoxLayout *topLayout = new QHBoxLayout();
-        topLayout->addWidget(speedSlider);
-        topLayout->addWidget(startButton);
-        
-        // Similarly, create and arrange other layouts for the rest of the UI components
-
-        // Finally, set the main layout
-        this->setLayout(mainLayout);
-    }
-};
+#include <QTimeEdit>
+#include <QFrame>
+#include <QPalette>
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    
-    CoolTrainUI coolTrainUI;
-    coolTrainUI.show();
-    
+    QMainWindow mainWindow;
+    mainWindow.setWindowTitle("Cool Train");
+
+    // Central widget and layout
+    QWidget *centralWidget = new QWidget(&mainWindow);
+    QGridLayout *gridLayout = new QGridLayout(centralWidget);
+
+    // Style sheet for the buttons and labels
+    QString buttonStyle = "QPushButton { background-color: #333; color: white; font-weight: bold; }";
+    QString labelStyle = "QLabel { color: #666; font-weight: bold; }";
+
+    // Speed Slider
+    QSlider *speedSlider = new QSlider(Qt::Horizontal);
+    speedSlider->setRange(0, 100);
+    QLabel *speedLabel = new QLabel("Speed");
+    speedLabel->setStyleSheet(labelStyle);
+    gridLayout->addWidget(speedLabel, 0, 0, 1, 1);
+    gridLayout->addWidget(speedSlider, 0, 1, 1, 3);
+
+    // Start Button
+    QPushButton *startButton = new QPushButton("START");
+    startButton->setStyleSheet(buttonStyle);
+    gridLayout->addWidget(startButton, 1, 0, 1, 4);
+
+    // Track selection buttons
+    QPushButton *trackOneButton = new QPushButton("1.Track");
+    QPushButton *trackTwoButton = new QPushButton("2.Track");
+    trackOneButton->setStyleSheet(buttonStyle);
+    trackTwoButton->setStyleSheet(buttonStyle);
+    gridLayout->addWidget(trackOneButton, 2, 0, 1, 2);
+    gridLayout->addWidget(trackTwoButton, 2, 2, 1, 2);
+
+    // Working time display
+    QLabel *workingTimeLabel = new QLabel("12:30\nWorking Time");
+    workingTimeLabel->setStyleSheet(labelStyle);
+    gridLayout->addWidget(workingTimeLabel, 3, 0, 1, 2);
+
+    // Laps display
+    QLabel *lapsLabel = new QLabel("003\nLaps");
+    lapsLabel->setStyleSheet(labelStyle);
+    gridLayout->addWidget(lapsLabel, 3, 2, 1, 2);
+
+    // Additional buttons
+    QPushButton *lightButton = new QPushButton("Light");
+    QPushButton *moreSettingsButton = new QPushButton("More Settings");
+    lightButton->setStyleSheet(buttonStyle);
+    moreSettingsButton->setStyleSheet(buttonStyle);
+    gridLayout->addWidget(lightButton, 4, 0, 1, 2);
+    gridLayout->addWidget(moreSettingsButton, 4, 2, 1, 2);
+
+    // Set central widget and show main window
+    mainWindow.setCentralWidget(centralWidget);
+    mainWindow.resize(400, 300);
+    mainWindow.show();
+
     return app.exec();
 }
