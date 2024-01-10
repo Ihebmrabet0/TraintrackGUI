@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
     gridLayout->addWidget(headerLabel, 0, 3, 1, 4);
     gridLayout->addWidget(helpButton, 0, 8, 1, 2);
 
-    for (int col = 0; i < 2; i++)
+    for (int col = 0; col < 2; col++)
     {
-        // Train i
+        // Train col
         QLabel *trainLabel = new QLabel("Train " + QString::number(i + 1));
         trainLabel->setStyleSheet(labelStyle);
         gridLayout->addWidget(trainLabel, 1 + col * 4, 1, 1, 5);
