@@ -7,6 +7,7 @@
 #include <QTimeEdit>
 #include <QFrame>
 #include <QPalette>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
