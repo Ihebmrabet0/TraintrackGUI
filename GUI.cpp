@@ -20,7 +20,22 @@ int main(int argc, char *argv[]) {
     // Style sheet for the buttons and labels
     QString buttonStyle = "QPushButton { background-color: #333; color: white; font-weight: bold; }";
     QString labelStyle = "QLabel { color: #666; font-weight: bold; }";
+    
+    // Train 1
+    // Speed Slider
+    QSlider *speedSlider = new QSlider(Qt::Horizontal);
+    speedSlider->setRange(0, 100);
+    QLabel *speedLabel = new QLabel("Speed");
+    speedLabel->setStyleSheet(labelStyle);
+    gridLayout->addWidget(speedLabel, 0, 0, 1, 1);
+    gridLayout->addWidget(speedSlider, 0, 1, 1, 3);
 
+    // Start Button
+    QPushButton *startButton = new QPushButton("START");
+    startButton->setStyleSheet(buttonStyle);
+    gridLayout->addWidget(startButton, 1, 0, 1, 4);
+
+    // Train 2
     // Speed Slider
     QSlider *speedSlider = new QSlider(Qt::Horizontal);
     speedSlider->setRange(0, 100);
