@@ -32,7 +32,10 @@ int main(int argc, char *argv[])
     gridLayout->addWidget(headerLabel, 0, 3, 1, 4);
     gridLayout->addWidget(helpButton, 0, 8, 1, 2);
 
-    for (int col = 0; col < 2; col++)
+    // max train number
+    int maxTrainNumber = 2;
+
+    for (int col = 0; col < maxTrainNumber; col++)
     {
         // Train col
         QLabel *trainLabel = new QLabel("Train " + QString::number(i + 1));
@@ -62,16 +65,16 @@ int main(int argc, char *argv[])
     QPushButton *trackTwoButton = new QPushButton("2.Track");
     trackOneButton->setStyleSheet(buttonStyle);
     trackTwoButton->setStyleSheet(buttonStyle);
-    gridLayout->addWidget(trackOneButton, 5 + 2 * 4, 1, 2, 2);
-    gridLayout->addWidget(trackTwoButton, 5 + 2 * 4, 4, 2, 2);
+    gridLayout->addWidget(trackOneButton, 1 + maxTrainNumber * 4, 1, 2, 2);
+    gridLayout->addWidget(trackTwoButton, 1 + maxTrainNumber * 4, 4, 2, 2);
 
     // Working time display
     QLabel *workingTimeLabel = new QLabel("12:30");
     workingTimeLabel->setStyleSheet(labelStyle);
-    gridLayout->addWidget(workingTimeLabel, 7, 2, 2, 3);
+    gridLayout->addWidget(workingTimeLabel, 3 + maxTrainNumber * 4, 2, 2, 3);
     QLabel *workingTimeTextLabel = new QLabel("Working Time");
     workingTimeTextLabel->setStyleSheet(labelStyle);
-    gridLayout->addWidget(workingTimeTextLabel, 7, 4, 1, 3);
+    gridLayout->addWidget(workingTimeTextLabel, 3 + maxTrainNumber * 4, 4, 1, 3);
 
     // Additional buttons
     QPushButton *lightButton = new QPushButton("Light");
@@ -80,7 +83,7 @@ int main(int argc, char *argv[])
     QIcon lightIcon(":/icons/light_icon.png");
     lightButton->setIcon(lightIcon);
     lightButton->setIconSize(QSize(16, 16));
-    gridLayout->addWidget(lightButton, 7, 7, 1, 3);
+    gridLayout->addWidget(lightButton, 3 + maxTrainNumber * 4, 7, 1, 3);
 
     QPushButton *moreSettingsButton = new QPushButton("More Settings");
     moreSettingsButton->setStyleSheet(buttonStyle);
@@ -88,7 +91,7 @@ int main(int argc, char *argv[])
     QIcon moreSettingsIcon(":/icons/menu_icon.png");
     moreSettingsButton->setIcon(moreSettingsIcon);
     moreSettingsButton->setIconSize(QSize(16, 16));
-    gridLayout->addWidget(moreSettingsButton, 7, 9, 1, 3);
+    gridLayout->addWidget(moreSettingsButton, 3 + maxTrainNumber * 4, 9, 1, 3);
 
     // Set central widget and show main window
     mainWindow.setCentralWidget(centralWidget);
