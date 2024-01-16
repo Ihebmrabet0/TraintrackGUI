@@ -11,7 +11,7 @@ HelpWindow::HelpWindow(QWidget *parent) : QWidget(parent)
     titleLabel->setStyleSheet(labelTitelStyle);
     layout->addWidget(titleLabel);
 
-    QLabel *helpTextLabel = new QLabel("If you need any help just \ncontact Iheb Mrabet 😅");
+    QLabel *helpTextLabel = new QLabel("If you need any help just \ncontact Iheb Mrabet");
     helpTextLabel->setStyleSheet(labelStyle);
     layout->addWidget(helpTextLabel);
 }

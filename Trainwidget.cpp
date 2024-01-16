@@ -25,6 +25,6 @@ TrainWidget::TrainWidget(int trainNumber, QWidget *parent) : QWidget(parent)
     startButton->setStyleSheet(buttonStyle);
     QIcon playIcon(":/icons/play_icon.png");
     startButton->setIcon(playIcon);
-    startButton->setIconSize(QSize(16, 16));
+    startButton->setIconSize(QSize(4, 4));
     layout->addWidget(startButton, 3, 0);
 }
