@@ -3,7 +3,17 @@
 
 bool Connector::connect()
 {
-    
+    wintp_Zug_Y = connection_init(TRAIN_Y , TRAIN_PORT_Y );
+	wintp_Zug_B = connection_init(TRAIN_B , TRAIN_PORT_B );
+	mainboard = connection_init( MB, MB_PORT );
+
+    if(!wintp_Zug_Y || !wintp_Zug_B || !mainboard)
+    {
+        connection_successful = false;
+        return false;
+    }
+        connection_successful = true;
+    return true;
 }
 
 bool Connector::connectDummy()
