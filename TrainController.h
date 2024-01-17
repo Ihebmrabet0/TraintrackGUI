@@ -1,7 +1,7 @@
 #ifndef TRAINCONTROLLER_H
 #define TRAINCONTROLLER_H 
 
-#include "src_winterface/winterface-api.h"
+#include "Connector.h"
 
 class TrainWidget;
 
@@ -17,7 +17,7 @@ class TrainController
 {
     public:
 
-    TrainController(TrainWidget * widget_train);
+    TrainController(TrainWidget * widget_train, Connector * connector);
 
     void setTrack(unsigned int track);
     void startTrain(int train);
