@@ -25,8 +25,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         TrainWidget.h TrainWidget.cpp
         HelpWindow.h HelpWindow.cpp
+        LightSettingsWindow.h LightSettingsWindow.cpp
         icons/light_icon.png icons/menu_icon.png icons/play_icon.png
-        gif/loading.gif gif/loading1.gif
         resources.qrc
         LoadingScreen.h LoadingScreen.cpp
         MainScreen.h MainScreen.cpp
