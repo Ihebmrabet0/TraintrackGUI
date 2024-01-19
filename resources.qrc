@@ -3,5 +3,10 @@
         <file>icons/light_icon.png</file>
         <file>icons/menu_icon.png</file>
         <file>icons/play_icon.png</file>
+        <file>gif/loading.gif</file>
+        <file>gif/loading1.gif</file>
+        <file>icons/backward.png</file>
+        <file>icons/forward.png</file>
+        <file>icons/stop.png</file>
     </qresource>
 </RCC>
