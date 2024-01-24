@@ -31,6 +31,7 @@ MainScreen::MainScreen(QWidget *parent) : QMainWindow(parent) {
     QString buttonStyleAction = "QPushButton { background-color: #333; color: white; border: none; border-radius: 5px; padding: 10px; font-size: 92px; font-style: normal; font-weight: 800;}";
     QString buttonStyleTrack = "QPushButton { background-color: #333; color: white; border: none; border-radius: 5px; padding: 30px 10px 30px 10px; font-family: Inter; font-size: 44px; font-style: normal; font-weight: 800;}";
     QString buttonStyleNormal = "QPushButton { background-color: #333; color: white; border: none; border-radius: 5px; padding: 10px; font-family: Inter; font-size: 30px; font-style: normal; font-weight: 600;}";
+    QString buttonStyleDanger = "QPushButton { background-color: #CA0B00; color: white; border: none; border-radius: 5px; padding: 10px; font-family: Inter; font-size: 92px; font-style: normal; font-weight: 800;}";
     QString statusDisLabelStyle = "QLabel { background-color: red; color: white; border: none; border-radius: 5px; padding: 8px; font-family: Inter; font-size: 30px; font-style: normal; font-weight: 600;}";
     QString statusConLabelStyle = "QLabel { background-color: green; color: white;  border: none; border-radius: 5px; padding: 8px; font-family: Inter; font-size: 30px; font-style: normal; font-weight: 600;}";
     QString labelTitleStyle = "QLabel { color: #0F172A; text-align: center; font-family: Inter; font-size: 60px; font-style: normal; font-weight: 800;}";
@@ -167,8 +168,8 @@ QSlider::sub-page:horizontal {
     gridLayout->addWidget(forwardButton, 4, 9, 1, 1);
 
 
-    QPushButton *stopButton = new QPushButton("");
-    stopButton->setStyleSheet(buttonStyleNormal);
+    QPushButton *stopButton = new QPushButton(" STOP");
+    stopButton->setStyleSheet(buttonStyleDanger);
     // Stop icon to stopButton
     QIcon stopIcon(":/icons/stop.png");
     stopButton->setIcon(stopIcon);

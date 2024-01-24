@@ -60,15 +60,25 @@ void LightSettingsWindow::onLightButtonClicked()
     {
         if (selectedLightButton)
         {
-            selectedLightButton->setStyleSheet(buttonStyle);
+            bool isActive = buttonStates.value(selectedLightButton, false);
+            selectedLightButton->setStyleSheet(isActive ? buttonActiveStyle : buttonStyle);
         }
-        selectedLightButton = button;
-        QString selectedButtonStyle = buttonStyle;
-        selectedButtonStyle.replace("background-color: #333;", "background-color: gray;");
-        selectedLightButton->setStyleSheet(selectedButtonStyle);
+        bool isActive = buttonStates.value(button, false);
+        buttonStates[button] = !isActive;
+
+        if (isActive)
+        {
+            button->setStyleSheet(buttonStyle);
+        }
+        else
+        {
+            button->setStyleSheet(buttonSelectedStyle);
+        }
+
 
         lastSelectedLight = button->text();
         editNameField->setText(lastSelectedLight);
+        selectedLightButton = button;
 
         // send LED ON OFF signal to LedController
         emit setLed(lastSelectedLight);
@@ -83,14 +93,14 @@ void LightSettingsWindow::onEditButtonClicked()
     {        
         emit renameLed(selectedLightButton->text(), newName);
         selectedLightButton->setText(newName);
-        selectedLightButton->setStyleSheet(buttonStyle);
-        selectedLightButton = nullptr; //
+        bool isActive = buttonStates.value(selectedLightButton, false);
+        selectedLightButton->setStyleSheet(isActive ? buttonActiveStyle : buttonStyle);
+
+        selectedLightButton = nullptr;
     }
     editNameField->clear();
     lastSelectedLight.clear();
     editNameField->clearFocus();
-
-    
 }
 
 
