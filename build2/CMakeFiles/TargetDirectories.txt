@@ -1,0 +1,8 @@
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/TraintrackGUI.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/edit_cache.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/rebuild_cache.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/list_install_components.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/install.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/install/local.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/install/strip.dir
+C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/TraintrackGUI_autogen.dir

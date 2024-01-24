@@ -27,9 +27,10 @@ LightSettingsWindow::LightSettingsWindow(QWidget *parent) : QWidget(parent)
     layout->addWidget(subtitleLabel, 1, 0, 1, 8);
 
     // Create 24 light buttons
-    for (int i = 0; i < 24; ++i)
+    for (int i = 0; i < NUMBER_OF_LEDS; ++i)
     {
         QPushButton *lightButton = new QPushButton(QString::number(i + 1));
+        led_buttons.append(lightButton);
         lightButton->setStyleSheet(buttonStyle);
         connect(lightButton, &QPushButton::clicked, this, &LightSettingsWindow::onLightButtonClicked);
         layout->addWidget(lightButton, 2 + i / 4, (i % 4)*2, 1, 2);
@@ -68,6 +69,10 @@ void LightSettingsWindow::onLightButtonClicked()
 
         lastSelectedLight = button->text();
         editNameField->setText(lastSelectedLight);
+
+        // send LED ON OFF signal to LedController
+        emit setLed(lastSelectedLight);
+
     }
 }
 
@@ -75,7 +80,8 @@ void LightSettingsWindow::onEditButtonClicked()
 {
     QString newName = editNameField->text();
     if (selectedLightButton)
-    {
+    {        
+        emit renameLed(selectedLightButton->text(), newName);
         selectedLightButton->setText(newName);
         selectedLightButton->setStyleSheet(buttonStyle);
         selectedLightButton = nullptr; //
@@ -83,5 +89,29 @@ void LightSettingsWindow::onEditButtonClicked()
     editNameField->clear();
     lastSelectedLight.clear();
     editNameField->clearFocus();
+
+    
 }
 
+
+void LightSettingsWindow::updateBtnNames(std::vector<QString>&names)
+{   
+    int counter = 0;
+    for(auto it = led_buttons.begin(); it!=led_buttons.end(); it++)
+    {
+        (*it)->setText(names[counter]);
+        counter++;
+    }
+}
+
+
+void LightSettingsWindow::setController(LedController * controller)
+{
+    this->controller = controller;
+   
+    
+    // Setting up connections
+    connect(this, SIGNAL(setLed(QString)), controller, SLOT(setLed(QString)));
+    connect(this, SIGNAL(renameLed(const QString&,const QString&)), controller, SLOT(setLedName(const QString&, const QString&)));
+
+}

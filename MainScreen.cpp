@@ -4,6 +4,9 @@
 
 MainScreen::MainScreen(QWidget *parent) : QMainWindow(parent) {
 
+
+    API_Connector = new Connector();
+
     // Central widget & layout
     QWidget *centralWidget = new QWidget(this);
     QGridLayout *mainLayout = new QGridLayout(centralWidget);
@@ -143,6 +146,7 @@ QSlider::sub-page:horizontal {
 
     // Light settings window
     LightSettingsWindow *lightSettings = new LightSettingsWindow();
+    LedController * lightController = new LedController(lightSettings, API_Connector);
     QObject::connect(moreSettingsButton, &QPushButton::clicked, lightSettings, &QWidget::show);
 
 

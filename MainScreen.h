@@ -26,6 +26,8 @@ public:
     void updateConnectionStatus(bool isConnected);
 private:
     QLabel *statusLabel;
+
+    Connector *API_Connector; 
 };
 
 #endif // MAINSCREEN_H

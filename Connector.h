@@ -1,6 +1,9 @@
 #ifndef CONNECTOR_H
 #define CONNECTOR_H
 
+#define WITHOUT_API
+
+#ifndef WITHOUT_API
 #include "src_winterface/winterface-api.h"
 
 class Connector
@@ -21,6 +24,15 @@ class Connector
         WINTP mainboard;
 
 };
+#else
+#include <iostream>
+
+class Connector
+{
+    int a;
+};
+
+#endif
 
 
 #endif

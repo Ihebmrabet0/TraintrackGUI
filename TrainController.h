@@ -23,6 +23,8 @@ class TrainController
     void startTrain(int train);
     void setTrainSpeed(int train, int speed);
 
+    
+
     private:
 
     //GUI-Component

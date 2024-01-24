@@ -29,6 +29,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         icons/light_icon.png icons/menu_icon.png icons/play_icon.png
         resources.qrc
         LoadingScreen.h LoadingScreen.cpp
+        LedController.h LedController.cpp
+        TrainController.h TrainController.cpp
+        Connector.h Connector.cpp
+        Constants.h
         MainScreen.h MainScreen.cpp
         gif/loading.gif gif/loading1.gif
         icons/backward.png icons/forward.png
