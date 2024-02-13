@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/TraintrackGUI_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI",
+	"INCLUDE_DIR" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/TraintrackGUI_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/gif/loading1.gif",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/gif/loading.gif",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/stop.png",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/light_icon.png",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/forward.png",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/play_icon.png",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/menu_icon.png",
+		"C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/icons/backward.png"
+	],
+	"LOCK_FILE" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/TraintrackGUI_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Developer/msys64/mingw64/share/qt6/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/build2/CMakeFiles/TraintrackGUI_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/Knaus/Documents/C++ Projects/Zug Gui/TraintrackGUI/resources.qrc",
+	"VERBOSITY" : 0
+}

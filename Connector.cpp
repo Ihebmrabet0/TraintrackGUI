@@ -1,8 +1,9 @@
 #include "Connector.h"
 
-
+#ifndef WITHOUT_API
 bool Connector::connect()
 {
+
     wintp_Zug_Y = connection_init(TRAIN_Y , TRAIN_PORT_Y );
 	wintp_Zug_B = connection_init(TRAIN_B , TRAIN_PORT_B );
 	mainboard = connection_init( MB, MB_PORT );
@@ -45,3 +46,5 @@ WINTP Connector::getMainBoard_IP()
 {
     return connection_successful ? mainboard : nullptr;
 }
+
+#endif

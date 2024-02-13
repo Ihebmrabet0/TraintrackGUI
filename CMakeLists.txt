@@ -16,7 +16,7 @@ set(PROJECT_SOURCES
         main.cpp
         LightSettingsWindow.cpp
         LightSettingsWindow.h
-        LightSettingsWindow.ui
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -25,8 +25,19 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         TrainWidget.h TrainWidget.cpp
         HelpWindow.h HelpWindow.cpp
+        LightSettingsWindow.h LightSettingsWindow.cpp
         icons/light_icon.png icons/menu_icon.png icons/play_icon.png
         resources.qrc
+        LoadingScreen.h LoadingScreen.cpp
+        LedController.h LedController.cpp
+        TrainController.h TrainController.cpp
+        Connector.h Connector.cpp
+        Constants.h
+        MainScreen.h MainScreen.cpp
+        gif/loading.gif gif/loading1.gif
+        icons/backward.png icons/forward.png
+        icons/stop.png
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET TraintrackGUI APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

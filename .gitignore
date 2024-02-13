@@ -62,3 +62,14 @@ build/TraintrackGUI_autogen/EWIEGA46WW/moc_LightSettingsWindow.cpp.d
 build/TraintrackGUI_autogen/EWIEGA46WW/moc_TrainWidget.cpp
 build/TraintrackGUI_autogen/EWIEGA46WW/moc_TrainWidget.cpp.d
 build/TraintrackGUI_autogen/EWIEGA46WW/qrc_resources.cpp
+build/CMakeFiles/TraintrackGUI.dir/LoadingScreen.cpp.obj
+build/CMakeFiles/TraintrackGUI.dir/LoadingScreen.cpp.obj.d
+build/CMakeFiles/TraintrackGUI.dir/MainScreen.cpp.obj
+build/CMakeFiles/TraintrackGUI.dir/MainScreen.cpp.obj.d
+build/TraintrackGUI_autogen/EWIEGA46WW/moc_LoadingScreen.cpp
+build/TraintrackGUI_autogen/EWIEGA46WW/moc_LoadingScreen.cpp.d
+build/TraintrackGUI_autogen/EWIEGA46WW/moc_MainScreen.cpp
+build/TraintrackGUI_autogen/EWIEGA46WW/moc_MainScreen.cpp.d
+.gitignore
+beispiel
+.gitignore
