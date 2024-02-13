@@ -11,7 +11,9 @@ Welcome to the TrainTrackGUI GitHub repository! TrainTrackGUI is a user-friendly
 - **User-Friendly Interface**: A clean and intuitive GUI built with Qt, making train and track management accessible to everyone.
 - **Advanced Settings**: Dive into advanced settings for precise control over each aspect of your train setup, including detailed LED configuration.
 
-## Getting Started
+## Design Preview
+
+For a detailed look at the design and layout of TrainTrackGUI, visit our Figma project: [TrainTrackGUI Design on Figma](https://www.figma.com/file/MjVzc8A4W3Lkq8ZMYNWjDN/CPP-Projekt?type=design&node-id=103%3A1175&mode=design&t=0L5y7wcxeiMkskPq-1)
 
 ### Prerequisites
 
