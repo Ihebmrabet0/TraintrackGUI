@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         TrainController.h TrainController.cpp
         Connector.h Connector.cpp
         Constants.h
+        Logger.h Logger.cpp
         MainScreen.h MainScreen.cpp
         gif/loading.gif gif/loading1.gif
         icons/backward.png icons/forward.png

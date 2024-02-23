@@ -186,10 +186,10 @@ void MainScreen::updateConnectionStatus(bool isConnected) {
     QString statusConLabelStyle = "QLabel { background-color: green; color: white;  border: none; border-radius: 5px; padding: 8px; font-family: Inter; font-size: 30px; font-style: normal; font-weight: 600;}";
 
     if (isConnected) {
-        statusLabel->setText("Connected");
+        statusLabel->setText("Verbinden");
         statusLabel->setStyleSheet(statusDisLabelStyle);
     } else {
-        statusLabel->setText("dzdDisconnected");
+        statusLabel->setText("Kein Signal");
         statusLabel->setStyleSheet(statusConLabelStyle);
     }
 }

@@ -14,6 +14,9 @@
 #include <QGraphicsDropShadowEffect>
 #include <QMovie>
 
+
+#include "Logger.h"
+
 #include "TrainWidget.h"
 #include "HelpWindow.h"
 #include "LightSettingsWindow.h"
@@ -24,6 +27,14 @@ class MainScreen : public QMainWindow {
 public:
     explicit MainScreen(QWidget *parent = nullptr);
     void updateConnectionStatus(bool isConnected);
+
+signals:
+
+    
+
+public slots:
+
+
 private:
     QLabel *statusLabel;
 

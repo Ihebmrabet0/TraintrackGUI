@@ -8,6 +8,8 @@
 #include <QGridLayout>
 #include <QList>
 #include <QMap>
+#include <QVector>
+#include <QObject>
 
 #include "Constants.h"
 #include "LedController.h"
@@ -28,12 +30,17 @@ signals:
 
     void setLed(QString led_name);
     void renameLed(QString old_name,QString new_name);
+    void onClose();
 
 public slots:
     void onLightButtonClicked();
     void onEditButtonClicked();
 
-    void updateBtnNames(std::vector<QString>&names);
+    void updateBtnNames(QVector<QString> names);
+
+protected:
+
+    void closeEvent(QCloseEvent* ev);
 
 private:
     QLineEdit *editNameField;

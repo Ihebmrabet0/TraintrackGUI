@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 
+#include "Logger.h"
+
 #ifdef WITHOUT_API
 #include <iostream>
 #endif
@@ -10,27 +12,29 @@ LedController::LedController(LightSettingsWindow * window, Connector *connector)
 : GUI(window), API(connector)
 {
         GUI->setController(this);
-        connect(this, SIGNAL(updateNames(std::vector<QString>&)), GUI, SLOT(setLed(updateBtnNames(std::vector<QString>&))));
-            
-        //Set to default
-        for(unsigned int counter = 1; counter <= NUMBER_OF_LEDS; counter++)
+        connect(this, SIGNAL(updateNames(QVector<QString>)), GUI, SLOT(updateBtnNames(QVector<QString>)));
+
+
+        if(!loadNameData(PATH_LED_NAMES))
         {
-                btn_name_to_index[QString::number(counter)] = counter-1;
+            //Set to default
+            for(unsigned int counter = 0; counter < NUMBER_OF_LEDS; counter++)
+            {
+                    btn_name_to_index[QString::number(counter+1)] = counter;
 
-                /// Btn_name -> index
-                /// "1"  -> 0
-                /// "2"  -> 1
-                /// "3"  -> 2
-                /// "4"  -> 3
-                /// "5"  -> 4
-                /// "6"  -> 5
-                /// ...
+                    /// Btn_name -> index
+                    /// "1"  -> 0
+                    /// "2"  -> 1
+                    /// "3"  -> 2
+                    /// "4"  -> 3
+                    /// "5"  -> 4
+                    /// "6"  -> 5
+                    /// ...
 
+            }
         }
 
 
-
-        loadNameData(PATH_LED_NAMES);
 
         for(int i = 0; i < NUMBER_OF_LEDS; i++)
         {
@@ -43,17 +47,19 @@ bool LedController::loadNameData(const char * path)
     std::fstream namefile;
 
     namefile.open(path, std::ios::in);
-
+    QString tmp;
+    QTextStream(&tmp) << "namefile.is_open(): "<<(namefile.is_open() ? "True" : "False");
+    Logger::N() -> print(tmp, tr(__FILE_NAME__),__LINE__);
     if(namefile.is_open())
     {
         std::string line;
-        unsigned int counter = 1;
-        std::vector<QString> namelist; namelist.reserve(30);
+        unsigned int counter = 0;
+        QVector<QString> namelist(NUMBER_OF_LEDS+2); namelist.resize(NUMBER_OF_LEDS*2);
 
         while(std::getline(namefile, line))
         {
             btn_name_to_index[QString(line.c_str())] = counter;
-            namelist.push_back(QString(line.c_str()));
+            namelist[counter] = QString(line.c_str());
             counter++;
         }
 
@@ -62,6 +68,7 @@ bool LedController::loadNameData(const char * path)
         ///SIGNAL TO LED GUI///
         ///////////////////////
         // to change button names
+
         emit updateNames(namelist); 
 
 
@@ -77,16 +84,27 @@ bool LedController::loadNameData(const char * path)
 void LedController::saveNameData(const char * path)
 {
     
-std::fstream namefile;
+    std::fstream namefile;
 
-    namefile.open(path, std::ios::out);
+    namefile.open(path, std::ios::out|std::ios::trunc);
+
+    std::vector<std::string> tmp(NUMBER_OF_LEDS+2);
+    tmp.reserve(NUMBER_OF_LEDS*2);
+
+    for(auto it = btn_name_to_index.begin(); it!=btn_name_to_index.end(); it++)
+    {
+            QString str;
+            QTextStream(&str) << (*it).first << " : "<<(*it).second;
+            DEBUG(str);
+            tmp[(*it).second] = (*it).first.toStdString();
+    }
 
     if(namefile.is_open())
     {
         
-        for(auto it = btn_name_to_index.begin(); it!=btn_name_to_index.end(); it++)
+        for(int i = 0; i < NUMBER_OF_LEDS; i++)
         {
-            namefile << (*it).first.toStdString()<<"\n";
+            namefile << tmp[i]<<"\n";
         }
 
 
@@ -97,6 +115,7 @@ std::fstream namefile;
 
 void LedController::setLed(QString led_name)
 {
+    
     unsigned int index = btn_name_to_index[led_name];
     led_matrix[index] = !led_matrix[index];
    
@@ -113,7 +132,7 @@ void LedController::setLedName(QString old_name, QString new_name)
 void LedController::updateLED(unsigned int position)
 {
     #ifdef WITHOUT_API
-    std::cout<<"Update LED"<<std::endl;
+    Logger::N() -> print(tr("update LED"), tr(__FILE_NAME__), __LINE__);
     #else
     mainboard_setLed(API->getMainBoard_IP(), position, led_matrix[position]);
     mainboard_writeLed(API->getMainBoard_IP());
@@ -123,7 +142,7 @@ void LedController::updateLED(unsigned int position)
 void LedController::resetLEDs()
 {
     #ifdef WITHOUT_API
-    std::cout<<"resetting LEDs"<<std::endl;
+    Logger::N() -> print(tr("resetting LEDs"), tr(__FILE_NAME__), __LINE__);
     #else
 
     for(int i = 0; i < NUMBER_OF_LEDS; i++)
@@ -134,4 +153,10 @@ void LedController::resetLEDs()
     mainboard_writeLed(API->getMainBoard_IP());
 
     #endif
+}
+
+void LedController::onClose()
+{
+    saveNameData(PATH_LED_NAMES);
+    Logger::N()->print(tr("LED Names saved"),tr(__FILE_NAME__),__LINE__);
 }

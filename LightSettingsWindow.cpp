@@ -1,4 +1,5 @@
 #include "LightSettingsWindow.h"
+#include "Logger.h"
 
 LightSettingsWindow::LightSettingsWindow(QWidget *parent) : QWidget(parent)
 {
@@ -55,6 +56,9 @@ LightSettingsWindow::LightSettingsWindow(QWidget *parent) : QWidget(parent)
 
 void LightSettingsWindow::onLightButtonClicked()
 {
+
+
+
     QPushButton *button = qobject_cast<QPushButton *>(sender());
     if (button)
     {
@@ -68,7 +72,7 @@ void LightSettingsWindow::onLightButtonClicked()
 
         if (isActive)
         {
-            button->setStyleSheet(buttonStyle);
+            //button->setStyleSheet(buttonStyle);
         }
         else
         {
@@ -88,6 +92,7 @@ void LightSettingsWindow::onLightButtonClicked()
 
 void LightSettingsWindow::onEditButtonClicked()
 {
+
     QString newName = editNameField->text();
     if (selectedLightButton)
     {        
@@ -104,9 +109,10 @@ void LightSettingsWindow::onEditButtonClicked()
 }
 
 
-void LightSettingsWindow::updateBtnNames(std::vector<QString>&names)
+void LightSettingsWindow::updateBtnNames(QVector<QString> names)
 {   
     int counter = 0;
+    Logger::N()->print(tr("updateBtnNames"),tr(__FILE_NAME__),__LINE__);
     for(auto it = led_buttons.begin(); it!=led_buttons.end(); it++)
     {
         (*it)->setText(names[counter]);
@@ -123,5 +129,10 @@ void LightSettingsWindow::setController(LedController * controller)
     // Setting up connections
     connect(this, SIGNAL(setLed(QString)), controller, SLOT(setLed(QString)));
     connect(this, SIGNAL(renameLed(const QString&,const QString&)), controller, SLOT(setLedName(const QString&, const QString&)));
+    connect(this, SIGNAL(onClose()), controller, SLOT(onClose()));
+}
 
+void LightSettingsWindow::closeEvent(QCloseEvent* ev)
+{
+    emit onClose();
 }

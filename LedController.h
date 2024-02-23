@@ -5,6 +5,7 @@
 #include <QString>
 #include <QObject>
 #include <QWidget>
+#include <QVector>
 #include <vector>
 #include "Connector.h"
 #include "Constants.h"
@@ -25,12 +26,12 @@ class LedController : public QObject
         void saveNameData(const char* path);
     signals:
         void updateName(QString name,unsigned int position);
-        void updateNames(std::vector<QString>& names);
+        void updateNames(QVector<QString> names);
 
     public slots:
         void setLed(QString led_name);
         void setLedName(QString old_name, QString new_name);
-        
+        void onClose(); 
 
 
     private:
