@@ -1,11 +1,16 @@
 #ifndef TRAINCONTROLLER_H
 #define TRAINCONTROLLER_H 
 
+#include <QObject>
+
 #include "Connector.h"
+#include "Logger.h"
 
 class TrainWidget;
 
 enum DIRECTION {FORWARD, BACKWARD};
+
+typedef TrainID unsigned int;
 
 struct Train
 {
@@ -13,8 +18,11 @@ struct Train
     unsigned int Speed; // 0 - 4000
 };
 
-class TrainController
+class TrainController : public QObject
 {
+
+    Q_OBJECT
+
     public:
 
     TrainController(TrainWidget * widget_train, Connector * connector);
@@ -23,7 +31,7 @@ class TrainController
     void startTrain(int train);
     void setTrainSpeed(int train, int speed);
 
-    
+
 
     private:
 
