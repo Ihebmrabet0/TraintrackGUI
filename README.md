@@ -28,7 +28,7 @@ To use TrainTrackGUI, you'll need:
 1. **Clone the Repository**
 
 ```sh
-git clone https://github.com/yourusername/TrainTrackGUI.git
+git clone https://github.com/Ihebmrabet0/TraintrackGUI.git
 cd TrainTrackGUI
 ```
 
